@@ -1,5 +1,5 @@
 from otree.api import *
-
+import random
 
 doc = """
 Your app description
@@ -83,12 +83,17 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-
     @staticmethod
     def vars_for_template(player: Player):
         group = player.group
         return dict(tripled_amount=group.sent_amount * C.MULTIPLIER)
 
+
+class EsperarATodos(WaitPage):
+    wait_for_all_groups = True
+    @staticmethod
+    def after_all_players_arrive(subsession: Subsession):
+        subsession.group_randomly()
 
 # FUNCTIONS
 def set_payoffs(group: Group):
@@ -103,4 +108,7 @@ def sent_amount_choices(group: Group):
 def sent_back_amount_choices(group: Group):
     return currency_range(0, group.sent_amount*C.MULTIPLIER, 1)
 
-page_sequence = [Introduction, Send, SendBackWaitPage, SendBack, ResultsWaitPage, Results]
+def creating_session(subsession):
+    subsession.group_randomly()
+
+page_sequence = [Introduction, Send, SendBackWaitPage, SendBack, ResultsWaitPage, Results, EsperarATodos]
