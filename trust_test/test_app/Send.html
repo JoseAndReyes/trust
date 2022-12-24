@@ -1,0 +1,13 @@
+{{ block title }}Your Choice{{ endblock }}
+{{ block content }}
+
+    {{ include C.INSTRUCTIONS_TEMPLATE }}
+
+    <p>
+    You are Participant A. Now you have {{C.ENDOWMENT}}. How much will you send to participant B?
+    </p>
+
+    {{ formfields }}
+    {{ next_button }}
+
+{{ endblock }}
