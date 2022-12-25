@@ -86,7 +86,9 @@ class Results(Page):
     @staticmethod
     def vars_for_template(player: Player):
         group = player.group
-        return dict(tripled_amount=group.sent_amount * C.MULTIPLIER)
+        p1_payoff = C.ENDOWMENT - group.sent_amount + group.sent_back_amount
+        p2_payoff = group.sent_amount * C.MULTIPLIER - group.sent_back_amount
+        return dict(tripled_amount=group.sent_amount * C.MULTIPLIER,p1_payoff=p1_payoff,p2_payoff=p2_payoff)
 
 
 class EsperarATodos(WaitPage):
