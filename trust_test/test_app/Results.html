@@ -2,32 +2,37 @@
 {{ block content }}
 
     {{ if player.id_in_group == 1 }}
-        <p>
-            You chose to send participant B {{ group.sent_amount }}.
-            Participant B returned {{ group.sent_back_amount }}.
-        </p>
-        <p>
-            You were initially endowed with {{ C.ENDOWMENT }},
-            chose to send {{ group.sent_amount }},
-            received {{ group.sent_back_amount }}
-            thus you now have:
-            {{ C.ENDOWMENT }}-{{ group.sent_amount }}+{{ group.sent_back_amount }}=<strong>{{ player.payoff }}</strong>
-        </p>
+        <table>
+          <tr>
+            <td>Round</td>
+            <td>{{player.round_number}}</td>
+          </tr>
+          <tr>
+            <td>Your Payoff</td>
+            <td>{{p1_payoff}}</td>
+          </tr>
+          <tr>
+            <td>Your Partner Payoff</td>
+            <td>{{p2_payoff}}</td>
+          </tr>
+        </table>
     {{ else }}
-        <p>
-            Participant A sent you {{ group.sent_amount }}.
-            They were tripled so you received {{ tripled_amount }}.
-            You chose to return {{ group.sent_back_amount }}.
-        </p>
-        <p>
-            You received {{ tripled_amount }},
-            chose to return {{ group.sent_back_amount }}
-            thus you now have:
-            ({{ tripled_amount }})-({{ group.sent_back_amount }})=<strong>{{ player.payoff }}</strong>
-        </p>
+        <table>
+          <tr>
+            <td>Round</td>
+            <td>{{player.round_number}}</td>
+          </tr>
+          <tr>
+            <td>Your Payoff</td>
+            <td>{{p2_payoff}}</td>
+          </tr>
+          <tr>
+            <td>Your Partner Payoff</td>
+            <td>{{p1_payoff}}</td>
+          </tr>
+        </table>
     {{ endif }}
 
     <p>{{ next_button }}</p>
 
 {{ endblock }}
-
