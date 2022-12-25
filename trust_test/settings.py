@@ -27,7 +27,11 @@ USE_POINTS = True
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
-
+AUTH_LEVEL = 'DEMO'
 DEMO_PAGE_INTRO_HTML = """ """
 
+# Ejecutar otree prodserver 80
+contraseña = 'test'
+environ['DATABASE_URL'] = "postgres://postgres:{}@localhost/django_db".format(contraseña)
 SECRET_KEY = '5988987251664'
+
