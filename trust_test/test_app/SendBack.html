@@ -7,7 +7,14 @@
         How much will you send to participant A?
     </p>
 
-    {{ formfields }}
+    <div style="display: flex">
+    0
+    &nbsp;
+    <input type="range" name="sent_back_amount" min="0" max={{tripled_amount}} style="flex: 1" >
+    &nbsp;
+    {{ tripled_amount }}
+    </div>
+    {{ formfield_errors 'sent_back_amount' }}
     <p>{{ next_button }}</p>
 
 {{ endblock }}

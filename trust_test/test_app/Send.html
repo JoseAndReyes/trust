@@ -7,7 +7,14 @@
     You are Participant A. Now you have {{C.ENDOWMENT}}. How much will you send to participant B?
     </p>
 
-    {{ formfields }}
+    <div style="display: flex">
+    0
+    &nbsp;
+    <input type="range" name="sent_amount" min="0" max={{C.ENDOWMENT}} style="flex: 1" >
+    &nbsp;
+    {{C.ENDOWMENT}}
+    </div>
+    {{ formfield_errors 'sent_amount' }}
     {{ next_button }}
 
 {{ endblock }}
